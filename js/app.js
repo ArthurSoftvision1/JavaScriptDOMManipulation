@@ -39,6 +39,7 @@ const main = document.querySelector('#main');
 adder.addEventListener('click', function() {
     let temp = document.createElement(addElement.value);
     temp.textContent = addElement.value;
+    temp.addEventListener('click', removeEle);
     main.appendChild(temp);
 });
 
@@ -52,12 +53,13 @@ btn.addEventListener('click', function(event) {
 
 function removerElements() {
     nodeLister.forEach(function(item) {
-        item.addEventListener('click', function(e) {
-            console.log(this);
-            main.removeChild(this);
-            dropDownBuilder();
-        });
+        item.addEventListener('click', removeEle);
     });
+}
+
+function removeEle() {
+    main.removeChild(this);
+    dropDownBuilder();
 }
 
 function dropDownBuilder() {
