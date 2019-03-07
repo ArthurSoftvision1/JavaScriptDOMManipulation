@@ -33,6 +33,13 @@ const seInput = document.querySelector('input[name=outputText]');
 const seBg = document.querySelector('input[name=bg]');
 const seTxt = document.querySelector('input[name=txt]');
 const btn = document.querySelector('.btn');
+const main = document.querySelector('#main');
+
+adder.addEventListener('click', function() {
+    let temp = document.createElement(addElement.value);
+    temp.textContent = addElement.value;
+    main.appendChild(temp);
+});
 
 btn.addEventListener('click', function(event) {
     let tempElement = nodeLister[eleMaker.value];
