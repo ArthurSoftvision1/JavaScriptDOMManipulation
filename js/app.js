@@ -1,4 +1,5 @@
 const classArray = ["padded", "bigger", "borderAdd"];
+const elementArray = ['div', 'p', 'span'];
 
 document.addEventListener('DOMContentLoaded', function() {
     classArray.forEach(function(item) {
@@ -7,6 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
         opt.innerHTML = item;
         selClasses.appendChild(opt);
     });
+
+    elementArray.forEach(function(item) {
+        let opt = document.createElement('option');
+        opt.value = item;
+        opt.innerHTML = item;
+        addElement.appendChild(opt);
+    });
+
     nodeLister = document.querySelectorAll('#main >*');
     dropDownBuilder();
 });
@@ -14,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
 const selClasses = document.querySelector('select[name=classes]');
 
 const eleMaker = document.querySelector('select[name=eleMaker]');
+
+const addElement = document.querySelector('select[name=addElement]');
+const adder = document.querySelector('button[name=adder]');
+
 let nodeLister;
 const selfElement = document.querySelector('div');
 const seInput = document.querySelector('input[name=outputText]');
