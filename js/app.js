@@ -6,15 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
         opt.value = item;
         opt.innerHTML = item;
         selClasses.appendChild(opt);
-    })
+    });
     nodeLister = document.querySelectorAll('#main >*');
-    nodeLister.forEach(function(item) {
-        console.log(item);
-    })
+    dropDownBuilder();
 });
 
 const selClasses = document.querySelector('select[name=classes]');
 
+const eleMaker = document.querySelector('select[name=eleMaker]');
 let nodeLister;
 const selfElement = document.querySelector('div');
 const seInput = document.querySelector('input[name=outputText]');
@@ -23,8 +22,20 @@ const seTxt = document.querySelector('input[name=txt]');
 const btn = document.querySelector('.btn');
 
 btn.addEventListener('click', function(event) {
-    selfElement.textContent = seInput.value;
-    selfElement.style.backgroundColor = seBg.value;
-    selfElement.style.color = seTxt.value;
-    selfElement.classList.toggle(selClasses.value);
+    let tempElement = nodeLister[eleMaker.value];
+    tempElement.textContent = seInput.value;
+    tempElement.style.backgroundColor = seBg.value;
+    tempElement.style.color = seTxt.value;
+    tempElement.classList.toggle(selClasses.value);
 });
+
+function dropDownBuilder() {
+    eleMaker.innerHTML = "";
+    nodeLister = document.querySelectorAll('#main >*');
+    nodeLister.forEach(function(item, index) {
+        let opt = document.createElement('option');
+        opt.value = index;
+        opt.innerHTML = item.tagName;
+        eleMaker.appendChild(opt);
+    });
+}
