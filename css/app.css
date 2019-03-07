@@ -10,3 +10,7 @@
 .borderAdd {
     border: 3px dotted blue;
 }
+
+#main >* {
+    border: 1px solid #ddd;
+}

@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     nodeLister = document.querySelectorAll('#main >*');
+    removerElements();
     dropDownBuilder();
 });
 
@@ -48,6 +49,16 @@ btn.addEventListener('click', function(event) {
     tempElement.style.color = seTxt.value;
     tempElement.classList.toggle(selClasses.value);
 });
+
+function removerElements() {
+    nodeLister.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+            console.log(this);
+            main.removeChild(this);
+            dropDownBuilder();
+        });
+    });
+}
 
 function dropDownBuilder() {
     eleMaker.innerHTML = "";
